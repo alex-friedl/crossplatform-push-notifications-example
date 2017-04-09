@@ -1,0 +1,24 @@
+{
+  "name": "crossplatform-push-notifications-example",
+  "version": "0.0.1",
+  "description": "Example for crossplatform push notifications using node-pushnotifications and React Native",
+  "main": "index.js",
+  "scripts": {
+    "server": "DEBUG=push:* node server/index.js",
+    "standard": "standard"
+  },
+  "author": "Alexander Friedl",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^2.6.3",
+    "koa": "^2.2.0",
+    "koa-body-parser": "^1.1.2",
+    "koa-router": "^7.1.1",
+    "mongoose": "^4.9.3",
+    "node-pushnotifications": "^1.0.17"
+  },
+  "devDependencies": {
+    "standard": "^10.0.1",
+    "standard-format": "^2.2.4"
+  }
+}
