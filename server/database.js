@@ -17,4 +17,9 @@ module.exports = class Database {
     const t = new this.DeviceToken(token)
     return t.save(token)
   }
+
+  async fetchDeviceTokens () {
+    const tokens = await this.DeviceToken.find().select('token').exec()
+    return tokens.map(d => d.token)
+  }
 }
