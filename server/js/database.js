@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = class Database {
   constructor () {
     this.debug = require('debug')('push:database')

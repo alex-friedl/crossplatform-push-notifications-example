@@ -1,3 +1,5 @@
+'use strict'
+
 module.exports = class Notifications {
   constructor () {
     this.debug = require('debug')('push:notifications')

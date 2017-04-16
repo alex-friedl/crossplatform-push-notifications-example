@@ -4,7 +4,7 @@
   "description": "Example for crossplatform push notifications using node-pushnotifications and React Native",
   "main": "index.js",
   "scripts": {
-    "server": "DEBUG=push:* node server/index.js",
+    "start": "DEBUG=push:* node js/index.js",
     "standard": "standard"
   },
   "author": "Alexander Friedl",

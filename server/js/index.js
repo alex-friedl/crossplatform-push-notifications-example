@@ -1,3 +1,5 @@
+'use strict'
+
 const SERVER_PORT = 3000
 
 const debug = require('debug')('push:server')
