@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1053572305135",
+    "firebase_url": "https://crossplattform-push-demo.firebaseio.com",
+    "project_id": "crossplattform-push-demo",
+    "storage_bucket": "crossplattform-push-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1053572305135:android:2598b1eae54e1766",
+        "android_client_info": {
+          "package_name": "com.example.crossplatform.push"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1053572305135-7onnoasfvhev177a3d8kh6hrdtnsvipt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuewK8OnkdkUcVJIVlq9gsTwhC42CxcWA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
