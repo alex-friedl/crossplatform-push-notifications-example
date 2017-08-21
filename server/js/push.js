@@ -5,7 +5,7 @@ module.exports = class Notifications {
     this.debug = require('debug')('push:notifications')
     const settings = {
       gcm: {
-        id: 'null'
+        id: 'AAAA9U3NkO8:APA91bE9XnPD1WQGYle0dbJs6KO6HmAq_73f_z2PHoPr3sbRovXbn9q-PyJAKYlxgNI88rBpTzNWCXRuxhX9FcwbDBhT4h0BAiJr4BiEx8uSkWHXM92q04Q6cydK-dHGSnR20bsgH0Lg'
       },
       apn: {
         token: {
@@ -25,7 +25,9 @@ module.exports = class Notifications {
       body: 'Powered by node.js and React Native'
     }
     this.push.send(tokens, data)
-      .then(results => this.debug('Results for sending notifications:', results))
+      .then(results => {
+        this.debug('Results for sending notifications:', results)
+      })
       .catch(err => this.debug('Error while sending notifications:', err))
   }
 }

@@ -37,23 +37,38 @@ function sendTokenToServer(token) {
     },
     body: token
   })
-  .then(res => console.log('Successfully sent token'))
-  .catch(err => console.error('Failed to send token'))
+    .then(res => console.log('Successfully sent token'))
+    .catch(err => console.error('Failed to send token'))
 }
 
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { token: 'No device token registered yet.' }
+    this.state = {
+      token: 'No device token registered yet.',
+      notification: 'No notification received yet'
+    }
   }
+
+  handleTokenUpdate = function (token) {
+    console.log('Received token', token);
+    this.setState({ token: token });
+    sendTokenToServer(token);
+  }
+
   componentDidMount() {
     FCM.getFCMToken()
-      .then(token => {
-        console.log('Received token', token);
-        this.setState({token: token});
-        sendTokenToServer(token)
-      })
+      .then(token => { this.handleTokenUpdate(token) })
       .catch(err => { console.error(err) });
+    this.notificationListener = FCM.on(FCMEvent.Notification, async (notif) => {
+      this.setState({ notification: notif.title })
+    });
+    this.refreshTokenListener = FCM.on(FCMEvent.RefreshToken, (token) => { this.handleTokenUpdate });
+  }
+  componentWillUnmount() {
+    // stop listening for events
+    this.notificationListener.remove();
+    this.refreshTokenListener.remove();
   }
   render() {
     return (
@@ -63,6 +78,9 @@ export default class App extends Component {
         </Text>
         <Text style={styles.instructions}>
           Device Token: {this.state.token}
+        </Text>
+        <Text style={styles.instructions}>
+          Last notification title: {this.state.notification}
         </Text>
       </View>
     );
