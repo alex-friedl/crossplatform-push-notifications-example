@@ -1,30 +1,43 @@
 'use strict';
+const DuplicateKeyError = require('./errors.js').DuplicateKeyError
+const debug = require('debug')('push:database')
+const mongoose = require('mongoose')
+mongoose.Promise = Promise
+mongoose.connect('mongodb://localhost/push-demo', { useMongoClient: true })
+const db = mongoose.connection
+
+const tokenSchema = mongoose.Schema({
+  token: {
+    type: String,
+    unique: true
+  }
+});
+const DeviceToken = mongoose.model('DeviceToken', tokenSchema)
 
 module.exports = class Database {
   constructor() {
-    this.debug = require('debug')('push:database')
-
-    this.mongoose = require('mongoose')
-    this.mongoose.Promise = Promise
-    this.mongoose.connect('mongodb://localhost/push-demo')
-    const db = this.mongoose.connection
-    db.on('error', (err) => this.debug('database connection error:', err))
-    db.once('open', () => this.debug('Opened connection to MongoDB'))
-
-    const tokenSchema = this.mongoose.Schema({
-      token: String
-    });
-    this.DeviceToken = this.mongoose.model('DeviceToken', tokenSchema)
+    db.on('error', (err) => debug('Database connection error:', err))
+    db.once('open', () => debug('Opened connection to MongoDB'))
   }
 
-  saveDeviceToken(token) {
-    this.debug('Trying to store new DeviceToken', token)
-    const t = new this.DeviceToken({ token: token })
-    return t.save()
+  async saveDeviceToken(token) {
+    debug('Trying to store new DeviceToken', token)
+    const t = new DeviceToken({ token: token })
+    try {
+      const result = await t.save()
+      return Promise.resolve(result)
+    } catch (e) {
+      if (e.code === 11000) {
+        // duplicate key error, totally acceptable for our use case where device tokens are being regularly sent by clients
+        debug(`Ignoring duplicate token ${token}`)
+        return Promise.reject(new DuplicateKeyError(`Token ${token} already stored in DB`))
+      }
+      return Promise.reject(e)
+    }
   }
 
   async fetchDeviceTokens() {
-    const tokens = await this.DeviceToken.find().select('token').exec()
+    const tokens = await DeviceToken.find().select('token').exec()
     return tokens.map(d => d.token)
   }
 }
