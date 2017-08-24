@@ -50,7 +50,7 @@ export default class App extends Component {
     }
   }
 
-  handleTokenUpdate = function (token) {
+  handleTokenUpdate (token) {
     console.log('Received token', token);
     this.setState({ token: token });
     sendTokenToServer(token);

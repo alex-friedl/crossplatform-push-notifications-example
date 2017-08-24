@@ -1,22 +1,15 @@
 {
-  "name": "crossplatform-push-server",
+  "name": "crossplatform-push-notifications-example",
   "version": "0.0.1",
   "description": "Example for crossplatform push notifications using node-pushnotifications and React Native",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=push:* node js/index.js",
-    "standard": "standard"
+    "app": "node app/node_modules/react-native/local-cli/cli.js start",
+    "server": "DEBUG=push:* node server/js/index.js",
+    "lint": "eslint server/js/ app/js/"
   },
   "author": "Alexander Friedl",
   "license": "MIT",
-  "dependencies": {
-    "debug": "^2.6.3",
-    "koa": "^2.2.0",
-    "koa-bodyparser": "^4.2.0",
-    "koa-router": "^7.1.1",
-    "mongoose": "^4.9.3",
-    "node-pushnotifications": "^1.0.17"
-  },
   "devDependencies": {
     "eslint": "^4.5.0",
     "eslint-config-airbnb-base": "^11.3.2",
