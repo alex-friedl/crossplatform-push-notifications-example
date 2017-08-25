@@ -54,6 +54,7 @@ export default class App extends Component {
   }
 
   async onNotificationReceived(notification) {
+    console.log('Received push notification', notification);
     this.setState({ notification: notification.title });
   }
 

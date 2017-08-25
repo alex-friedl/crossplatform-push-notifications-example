@@ -1,11 +1,10 @@
 {
   "name": "crossplatform-push-server",
-  "version": "0.0.1",
-  "description": "Example for crossplatform push notifications using node-pushnotifications and React Native",
+  "version": "1.0.0",
+  "description": "Crossplatform push example server application",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=push:* node js/index.js",
-    "standard": "standard"
+    "start": "DEBUG=push:* node index.js"
   },
   "author": "Alexander Friedl",
   "license": "MIT",
