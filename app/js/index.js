@@ -1,13 +1,10 @@
-'use strict';
-
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
 } from 'react-native';
-import FCM, { FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType } from 'react-native-fcm';
+import Push from './push';
 
 const styles = StyleSheet.create({
   container: {
@@ -29,58 +26,54 @@ const styles = StyleSheet.create({
 });
 
 function sendTokenToServer(token) {
-  console.log('Sending token to server');
+  console.log(`Sending token ${token} to server`);
   fetch('http://10.0.2.2:3000/token/', {
     method: 'POST',
     headers: {
       'Content-Type': 'text/plain',
     },
-    body: token
+    body: token,
   })
-    .then(res => console.log('Successfully sent token'))
-    .catch(err => console.error('Failed to send token'))
+    .then(() => { console.log('Successfully sent token'); })
+    .catch((err) => { console.error('Failed to send token', err); });
 }
 
 export default class App extends Component {
   constructor(props) {
     super(props);
+    this.push = new Push((token) => { this.handleTokenUpdate(token); });
+    this.push.registerNotificationListener((notification) => { this.onNotificationReceived(notification); });
     this.state = {
       token: 'No device token registered yet.',
-      notification: 'No notification received yet'
-    }
+      notification: 'No notification received yet',
+    };
   }
 
-  handleTokenUpdate (token) {
+  componentWillUnmount() {
+    this.push.unregister();
+  }
+
+  async onNotificationReceived(notification) {
+    this.setState({ notification: notification.title });
+  }
+
+  handleTokenUpdate(token) {
     console.log('Received token', token);
-    this.setState({ token: token });
+    this.setState({ token });
     sendTokenToServer(token);
   }
 
-  componentDidMount() {
-    FCM.getFCMToken()
-      .then(token => { this.handleTokenUpdate(token) })
-      .catch(err => { console.error(err) });
-    this.notificationListener = FCM.on(FCMEvent.Notification, async (notif) => {
-      this.setState({ notification: notif.title })
-    });
-    this.refreshTokenListener = FCM.on(FCMEvent.RefreshToken, (token) => { this.handleTokenUpdate });
-  }
-  componentWillUnmount() {
-    // stop listening for events
-    this.notificationListener.remove();
-    this.refreshTokenListener.remove();
-  }
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Crossplatform Push Demo
+                    Crossplatform Push Demo
         </Text>
         <Text style={styles.instructions}>
-          Device Token: {this.state.token}
+                    Device Token: {this.state.token}
         </Text>
         <Text style={styles.instructions}>
-          Last notification title: {this.state.notification}
+                    Last notification title: {this.state.notification}
         </Text>
       </View>
     );

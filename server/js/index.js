@@ -12,7 +12,9 @@ const DuplicateKeyError = require('./errors.js').DuplicateKeyError;
 const push = require('./push.js');
 
 const app = new Koa();
-app.use(bodyParser());
+app.use(bodyParser({
+  enableTypes: ['text'],
+}));
 app.use(router.routes());
 
 router.post('/token', async (ctx) => {
