@@ -22,7 +22,7 @@ If you don't want to use Firebase Messaging for your iOS application, you could 
 
 ## Run demo application
 
-- Start MongoDB `mongod --dpath=<yourDbPath>`
+- Start MongoDB `mongod --dbpath=<yourDbPath>`
 - Start server `npm run server`
 - Start React Native app packager `npm run app-pkg`
 - Connect an Android device or start a simulator
