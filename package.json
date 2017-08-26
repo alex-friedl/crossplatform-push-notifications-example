@@ -18,5 +18,12 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.3.0"
+  },
+  "bugs": {
+      "url": "https://github.com/alex-friedl/crossplatform-push-notifications-example/issues"
+  },
+  "repository": {
+      "type": "git",
+      "url": "git+ssh://git@github.com:alex-friedl/crossplatform-push-notifications-example.git"
   }
 }

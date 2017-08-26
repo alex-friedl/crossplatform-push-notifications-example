@@ -11,8 +11,12 @@ The iOS setup is incomplete because I currently don't have an active Apple Devel
 If you don't want to use Firebase Messaging for your iOS application, you could replace the `react-native-fcm` library with [react-native-push-notification](https://github.com/zo0r/react-native-push-notification).
 
 ## Requirements
+
+The backend is dockerized, so simply install and run 
+
 - [node.js 8.x.x](https://nodejs.org/en/download/current/)
-- [MongoDB](https://docs.mongodb.com/getting-started/shell/installation/)
+- Recommended: [Docker](https://www.docker.com/)
+- Optional if you don't want to use Docker: [MongoDB](https://docs.mongodb.com/getting-started/shell/installation/)
 - Android or iOS development setup (e.g. [Android Studio](https://developer.android.com/studio/index.html))
 
 ## Setup
@@ -22,8 +26,15 @@ If you don't want to use Firebase Messaging for your iOS application, you could 
 
 ## Run demo application
 
-- Start MongoDB `mongod --dbpath=<yourDbPath>`
-- Start server `npm run server`
+### Start server
+
+- Run `docker-compose up`
+- Alternatively:
+  - Start MongoDB `mongod --dbpath=<yourDbPath>`
+  - Start server `npm run server`
+
+### Run app  
+
 - Start React Native app packager `npm run app-pkg`
 - Connect an Android device or start a simulator
 - Run Android app `npm run android`
@@ -38,9 +49,15 @@ In order to send a sample push notification to all known device tokens execute `
 
 The application should now display _Last notification title: Crossplatform push is working_.
 
+## Configuration options
+
+If you choose to run the backend locally without Docker, you can configure two parameters via environment variables:
+
+- _DB\_HOST_: MongoDB host string
+- _SERVER\_PORT_: HTTP port of the server application 
+
 ## Open tasks
 
 - Provide sample implementation using [react-native-push-notification](https://github.com/zo0r/react-native-push-notification)
-- Make server port and MongoDB connection string configurable
 - Style React Native App
 - Write tests

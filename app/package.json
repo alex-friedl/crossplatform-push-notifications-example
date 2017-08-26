@@ -23,5 +23,12 @@
 	},
 	"jest": {
 		"preset": "react-native"
-	}
+    },
+    "bugs": {
+        "url": "https://github.com/alex-friedl/crossplatform-push-notifications-example/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com:alex-friedl/crossplatform-push-notifications-example.git"
+    }
 }
