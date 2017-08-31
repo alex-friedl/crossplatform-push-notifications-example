@@ -2,7 +2,7 @@
 
 This is an example for a Crossplatform Push-Notification setup that works for both Android and iOS.
 
-The example comprises of a server application written in [node.js](https://nodejs.org) that uses the [node-pushnotifications](https://github.com/appfeel/node-pushnotifications) library and a [React Native](https://facebook.github.io/react-native/) app that uses the [react-native-fcm](https://github.com/evollu/react-native-fcm) library.
+The example comprises of a server application written in [node.js](https://nodejs.org) that uses the [node-pushnotifications](https://github.com/appfeel/node-pushnotifications) library and a [React Native](https://facebook.github.io/react-native/) app that demonstrates the usage of the [react-native-push-notification](https://github.com/zo0r/react-native-push-notification) library and the [react-native-fcm](https://github.com/evollu/react-native-fcm) library.
 
 There is an example [Firebase](https://firebase.google.com/) Android application setup that works out of the box. In order to use your own Firebase application, replace the `google-services.json` in the `app/android`directory with your own.
 
@@ -50,13 +50,25 @@ The application should now display _Last notification title: Crossplatform push 
 
 ## Configuration options
 
+### Server
+
 If you choose to run the backend locally without Docker, you can configure two parameters via environment variables:
 
 - _DB\_HOST_: MongoDB host string
-- _SERVER\_PORT_: HTTP port of the server application 
+- _SERVER\_PORT_: HTTP port of the server application
+
+### App
+
+The app uses the [react-native-config](https://github.com/luggit/react-native-config) library to configure its environment.
+
+You can edit the *app/.env* file in order to configure the following:
+
+- _PUSH\_LIB_: Determines which library will be used. Possible values:
+  - *fcm*: Use [react-native-fcm](https://github.com/evollu/react-native-fcm)
+  - *rn-push* (actually anything else as well): Use [react-native-push-notification](https://github.com/zo0r/react-native-push-notification)
+- SERVER_URL: Base URL of the server application
 
 ## Open tasks
 
-- Provide sample implementation using [react-native-push-notification](https://github.com/zo0r/react-native-push-notification)
 - Style React Native App
 - Write tests

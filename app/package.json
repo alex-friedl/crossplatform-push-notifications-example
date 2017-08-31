@@ -1,7 +1,7 @@
 {
 	"name": "crossplattform-push-demo-app",
-    "version": "1.0.0",
-    "description": "Crossplatform push example React Native app",
+	"version": "1.0.0",
+	"description": "Crossplatform push example React Native app",
 	"license": "MIT",
 	"author": "Alexander Friedl",
 	"scripts": {
@@ -13,7 +13,9 @@
 	"dependencies": {
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.47.1",
-		"react-native-fcm": "^8.0.0"
+		"react-native-config": "^0.6.1",
+		"react-native-fcm": "^8.0.0",
+		"react-native-push-notification": "^3.0.1"
 	},
 	"devDependencies": {
 		"babel-jest": "19.0.0",
@@ -23,12 +25,12 @@
 	},
 	"jest": {
 		"preset": "react-native"
-    },
-    "bugs": {
-        "url": "https://github.com/alex-friedl/crossplatform-push-notifications-example/issues"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+ssh://git@github.com:alex-friedl/crossplatform-push-notifications-example.git"
-    }
+	},
+	"bugs": {
+		"url": "https://github.com/alex-friedl/crossplatform-push-notifications-example/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com:alex-friedl/crossplatform-push-notifications-example.git"
+	}
 }

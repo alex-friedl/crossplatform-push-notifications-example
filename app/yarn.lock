@@ -3231,9 +3231,17 @@ react-devtools-core@2.3.1:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+react-native-config@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.6.1.tgz#0a4c0a6ef8d086aeac9902ac4c3c9d9d19fa888a"
+
 react-native-fcm@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/react-native-fcm/-/react-native-fcm-8.0.0.tgz#63d114dd98a6ef3994b8082b1287daca15bcdc20"
+
+react-native-push-notification@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-push-notification/-/react-native-push-notification-3.0.1.tgz#0e23db302d03bb4a3f28dc072dcaf2a9a1178ed8"
 
 react-native@0.47.1:
   version "0.47.1"

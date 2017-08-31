@@ -4,7 +4,11 @@ import {
   Text,
   View,
 } from 'react-native';
-import Push from './push';
+import Config from 'react-native-config';
+import PushFCM from './fcm';
+import PushRN from './rn-push';
+
+const Push = Config.PUSH_LIB === 'fcm' ? PushFCM : PushRN;
 
 const styles = StyleSheet.create({
   container: {
@@ -27,7 +31,7 @@ const styles = StyleSheet.create({
 
 function sendTokenToServer(token) {
   console.log(`Sending token ${token} to server`);
-  fetch('http://10.0.2.2:3000/token/', {
+  fetch(`${Config.SERVER_URL}/token/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'text/plain',
@@ -41,7 +45,8 @@ function sendTokenToServer(token) {
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.push = new Push((token) => { this.handleTokenUpdate(token); });
+    const onTokenReceived = (token) => { this.handleTokenUpdate(token); };
+    this.push = new Push(onTokenReceived);
     this.push.registerNotificationListener((notification) => { this.onNotificationReceived(notification); });
     this.state = {
       token: 'No device token registered yet.',
@@ -60,6 +65,7 @@ export default class App extends Component {
 
   handleTokenUpdate(token) {
     console.log('Received token', token);
+    console.log('push', this.push);
     this.setState({ token });
     sendTokenToServer(token);
   }
@@ -69,6 +75,9 @@ export default class App extends Component {
       <View style={styles.container}>
         <Text style={styles.welcome}>
                     Crossplatform Push Demo
+        </Text>
+        <Text style={styles.instructions}>
+                    Using {this.push.wrappedLibrary}
         </Text>
         <Text style={styles.instructions}>
                     Device Token: {this.state.token}
