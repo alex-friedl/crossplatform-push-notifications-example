@@ -13,7 +13,8 @@ const settings = {
   },
 };
 
-const PushNotifications = new require('node-pushnotifications') // eslint-disable-line
+const PushNotifications = require('node-pushnotifications');
+
 const push = new PushNotifications(settings);
 
 module.exports = {
