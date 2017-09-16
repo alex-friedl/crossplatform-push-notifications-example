@@ -12,11 +12,10 @@ If you don't want to use Firebase Messaging for your iOS application, you could 
 
 ## Requirements
 
-The backend is dockerized, so simply install and run 
-
-- [node.js 8.x.x](https://nodejs.org/en/download/current/)
 - Recommended: [Docker](https://www.docker.com/)
-- Optional if you don't want to use Docker: [MongoDB](https://docs.mongodb.com/getting-started/shell/installation/)
+- Optional (if you don't want to use Docker): 
+  - [node.js 8.x.x](https://nodejs.org/en/download/current/)
+  - [MongoDB](https://docs.mongodb.com/getting-started/shell/installation/)
 - Android or iOS development setup (e.g. [Android Studio](https://developer.android.com/studio/index.html))
 
 ## Setup
