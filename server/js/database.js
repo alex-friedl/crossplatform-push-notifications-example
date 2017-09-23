@@ -1,3 +1,4 @@
+const DUPLICATE_KEY_ERROR_CODE = 11000;
 const DuplicateKeyError = require('./errors.js').DuplicateKeyError;
 const debug = require('debug')('push:database');
 const mongoose = require('mongoose');
@@ -27,7 +28,7 @@ module.exports = {
       const result = await t.save();
       return Promise.resolve(result);
     } catch (e) {
-      if (e.code === 11000) {
+      if (e.code === DUPLICATE_KEY_ERROR_CODE) {
         /* duplicate key error istotally acceptable for our use case 
          * where device tokens are being regularly sent by clients */
         debug(`Ignoring duplicate token ${token}`);
