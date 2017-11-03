@@ -9,7 +9,7 @@
     "author": "Alexander Friedl",
     "license": "MIT",
     "dependencies": {
-        "debug": "^2.6.3",
+        "debug": "^3.1.0",
         "koa": "^2.2.0",
         "koa-bodyparser": "^4.2.0",
         "koa-router": "^7.1.1",
