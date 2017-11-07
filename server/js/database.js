@@ -29,7 +29,7 @@ module.exports = {
       return Promise.resolve(result);
     } catch (e) {
       if (e.code === DUPLICATE_KEY_ERROR_CODE) {
-        /* duplicate key error istotally acceptable for our use case 
+        /* duplicate key error is totally acceptable for our use case 
          * where device tokens are being regularly sent by clients */
         debug(`Ignoring duplicate token ${token}`);
         return Promise.reject(new DuplicateKeyError(`Token ${token} already stored in DB`));
