@@ -1,3 +1,4 @@
+/* eslint react/jsx-filename-extension: "off" */
 import React, { Component } from 'react';
 import {
   StyleSheet,
@@ -47,7 +48,9 @@ export default class App extends Component {
     super(props);
     const onTokenReceived = (token) => { this.handleTokenUpdate(token); };
     this.push = new Push(onTokenReceived);
-    this.push.registerNotificationListener((notification) => { this.onNotificationReceived(notification); });
+    this.push.registerNotificationListener((notification) => {
+      this.onNotificationReceived(notification);
+    });
     this.state = {
       token: 'No device token registered yet.',
       notification: 'No notification received yet',
@@ -65,7 +68,6 @@ export default class App extends Component {
 
   handleTokenUpdate(token) {
     console.log('Received token', token);
-    console.log('push', this.push);
     this.setState({ token });
     sendTokenToServer(token);
   }

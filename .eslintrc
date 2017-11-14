@@ -1,6 +1,12 @@
 {
-  "extends": "airbnb",
-  "parserOptions": {
-    "ecmaVersion": 2017
-  }
+    "extends": "airbnb",
+    "rules": {
+        "no-console": 0
+    },
+    "globals": {
+        "fetch": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2017
+    }
 }

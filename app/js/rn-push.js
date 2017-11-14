@@ -1,3 +1,5 @@
+/* eslint class-methods-use-this: "off" */
+
 import PushNotification from 'react-native-push-notification';
 
 export default class Push {
