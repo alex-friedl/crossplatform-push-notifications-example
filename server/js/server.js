@@ -16,6 +16,7 @@ app.use(bodyParser({
   enableTypes: ['text'],
 }));
 app.use(router.routes());
+app.use(router.allowedMethods());
 
 router.post('/token', async (ctx) => {
   const token = ctx.request.body;
