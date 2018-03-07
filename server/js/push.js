@@ -27,10 +27,10 @@ module.exports = {
     try {
       const results = await push.send(tokens, data);
       debug('Results for sending notifications:', results);
-      return Promise.resolve(results);
+      return results;
     } catch (err) {
       debug('Error while sending notifications:', err);
-      return Promise.reject(err);
+      throw err;
     }
   },
 };

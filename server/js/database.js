@@ -26,15 +26,15 @@ module.exports = {
     const t = new DeviceToken({ token });
     try {
       const result = await t.save();
-      return Promise.resolve(result);
+      return result;
     } catch (e) {
       if (e.code === DUPLICATE_KEY_ERROR_CODE) {
         /* duplicate key error is totally acceptable for our use case 
          * where device tokens are being regularly sent by clients */
         debug(`Ignoring duplicate token ${token}`);
-        return Promise.reject(new DuplicateKeyError(`Token ${token} already stored in DB`));
+        throw new DuplicateKeyError(`Token ${token} already stored in DB`);
       }
-      return Promise.reject(e);
+      throw e;
     }
   },
 
