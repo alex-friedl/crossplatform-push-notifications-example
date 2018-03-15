@@ -4,7 +4,11 @@
     "description": "Crossplatform push example server application",
     "main": "index.js",
     "scripts": {
-        "start": "DEBUG=push:* node index.js"
+        "start": "DEBUG=push:* node index.js",
+        "test": "jest"
+    },
+    "jest": {
+        "testEnvironment": "node"
     },
     "author": "Alexander Friedl",
     "license": "MIT",
@@ -15,6 +19,9 @@
         "koa-router": "^7.1.1",
         "mongoose": "^4.9.3",
         "node-pushnotifications": "^1.0.18"
+    },
+    "devDependencies": {
+        "jest": "^22.4.2"
     },
     "bugs": {
         "url": "https://github.com/alex-friedl/crossplatform-push-notifications-example/issues"
