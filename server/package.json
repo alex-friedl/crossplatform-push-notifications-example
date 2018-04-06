@@ -18,7 +18,7 @@
         "koa-bodyparser": "^4.2.0",
         "koa-router": "^7.1.1",
         "mongoose": "^4.9.3",
-        "node-pushnotifications": "^1.0.18"
+        "node-pushnotifications": "^1.0.19"
     },
     "devDependencies": {
         "jest": "^22.4.2"
