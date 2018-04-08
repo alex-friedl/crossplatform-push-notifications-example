@@ -4,11 +4,8 @@ This is an example for a Crossplatform Push-Notification setup that works for bo
 
 The example comprises of a server application written in [node.js](https://nodejs.org) that uses the [node-pushnotifications](https://github.com/appfeel/node-pushnotifications) library and a [React Native](https://facebook.github.io/react-native/) app that demonstrates the usage of the [react-native-push-notification](https://github.com/zo0r/react-native-push-notification) library and the [react-native-fcm](https://github.com/evollu/react-native-fcm) library.
 
-There is an example [Firebase](https://firebase.google.com/) Android application setup that works out of the box. In order to use your own Firebase application, replace the `google-services.json` in the `app/android`directory with your own.
-
-The iOS setup is incomplete because I currently don't have an active Apple Developer subscription but should be easy to complete by following the documentations.
-
-If you don't want to use Firebase Messaging for your iOS application, you could replace the `react-native-fcm` library with [react-native-push-notification](https://github.com/zo0r/react-native-push-notification).
+It includes an example [Firebase](https://firebase.google.com/) application setup that works out of the box. 
+In order to use your own Firebase application, replace the `google-services.json` in the `app/android` directory, respectively the `GoogleService-Info.plist`in the `app/ios`directory with your own (downloadable in the [Firebase Console](https://console.firebase.google.com/)).
 
 ## Requirements
 
@@ -35,8 +32,9 @@ If you don't want to use Firebase Messaging for your iOS application, you could 
 ### Run app  
 
 - Start React Native app packager `npm run app-pkg`
-- Connect an Android device or start a simulator
+- Connect a device or start a simulator
 - Run Android app `npm run android`
+- Run iOS app `npm run ios`
 
 ## What's happening?
 
@@ -68,7 +66,6 @@ You can edit the *app/.env* file in order to configure the following:
   - *rn-push* (actually anything else as well): Use [react-native-push-notification](https://github.com/zo0r/react-native-push-notification)
 - SERVER_URL: Base URL of the server application
 
-## Open tasks
+## Known issues
 
-- Style React Native App
-- Write tests
+- Usage of `react-native-push-notification` for iOS currently not functional. Help appreciated.

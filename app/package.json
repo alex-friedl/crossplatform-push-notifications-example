@@ -1,27 +1,30 @@
 {
-	"name": "crossplattform-push-demo-app",
+	"name": "com.example.crossplatform.push",
+	"displayName": "Crossplatform Push Demo",
 	"version": "1.0.0",
 	"description": "Crossplatform push example React Native app",
 	"license": "MIT",
 	"author": "Alexander Friedl",
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"android": "node node_modules/react-native/local-cli/cli.js run-android",
-		"ios": "node node_modules/react-native/local-cli/cli.js run-ios --simulator=\"iPhone 8\"",
+		"android": "ENVFILE=.env.android node node_modules/react-native/local-cli/cli.js run-android",
+		"ios": "node node_modules/react-native/local-cli/cli.js run-ios",
 		"test": "jest"
 	},
 	"dependencies": {
-		"react": "16.0.0-alpha.12",
-		"react-native": "0.47.1",
-		"react-native-config": "^0.6.1",
-		"react-native-fcm": "^8.0.0",
-		"react-native-push-notification": "^3.0.1"
+		"react": "16.3.1",
+		"react-native": "^0.55.3",
+		"react-native-config": "^0.11.5",
+		"react-native-fcm": "^14.1.4",
+		"react-native-push-notification": "^3.0.2"
 	},
 	"devDependencies": {
-		"babel-jest": "19.0.0",
-		"babel-preset-react-native": "1.9.1",
-		"jest": "19.0.2",
-		"react-test-renderer": "16.0.0-alpha.6"
+		"babel-core": "^6.26.0",
+		"babel-jest": "22.4.3",
+		"babel-preset-react-native": "4.0.0",
+		"eslint": "^4.19.1",
+		"jest": "22.4.3",
+		"react-test-renderer": "16.3.1"
 	},
 	"jest": {
 		"preset": "react-native"

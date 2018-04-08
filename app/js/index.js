@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function sendTokenToServer(token) {
+const sendTokenToServer = (token) => {
   console.log(`Sending token ${token} to server`);
   fetch(`${Config.SERVER_URL}/token/`, {
     method: 'POST',
@@ -41,7 +41,7 @@ function sendTokenToServer(token) {
   })
     .then(() => { console.log('Successfully sent token'); })
     .catch((err) => { console.error('Failed to send token', err); });
-}
+};
 
 export default class App extends Component {
   constructor(props) {
