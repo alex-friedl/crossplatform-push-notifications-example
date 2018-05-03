@@ -22,18 +22,20 @@ const DeviceToken = mongoose.model('DeviceToken', tokenSchema);
 module.exports = {
 
   saveDeviceToken: async (token) => {
-    debug('Trying to store new DeviceToken', token);
+    debug('Trying to store new device token', token);
     const t = new DeviceToken({ token });
     try {
       const result = await t.save();
+      debug('Successfully stored device token', token);
       return result;
     } catch (e) {
       if (e.code === DUPLICATE_KEY_ERROR_CODE) {
         /* duplicate key error is totally acceptable for our use case 
          * where device tokens are being regularly sent by clients */
-        debug(`Ignoring duplicate token ${token}`);
-        throw new DuplicateKeyError(`Token ${token} already stored in DB`);
+        debug(`Ignoring duplicate device token ${token}`);
+        throw new DuplicateKeyError(`Device token ${token} already stored in DB`);
       }
+      debug(`Error while trying to store token ${token}`, e);
       throw e;
     }
   },
