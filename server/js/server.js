@@ -21,23 +21,20 @@ app.use(router.allowedMethods());
 router.post('/token', async (ctx) => {
   const token = ctx.request.body;
   debug('Received new device token', token);
-  if (ctx.is('text/plain')) {
-    if (typeof token === 'string') {
-      try {
-        ctx.body = await db.saveDeviceToken(token);
-        ctx.status = 201;
-      } catch (e) {
-        if (e instanceof DuplicateKeyError) {
-          ctx.status = 200;
-        } else {
-          ctx.throw(e);
-        }
-      }
-    } else {
-      ctx.throw(400, 'Token must be a string');
-    }
-  } else {
+
+  if (!ctx.is('text/plain')) {
     ctx.throw(415, 'Only text/plain is accepted as Content-Type');
+  }
+
+  try {
+    ctx.body = await db.saveDeviceToken(token);
+    ctx.status = 201;
+  } catch (e) {
+    if (e instanceof DuplicateKeyError) {
+      ctx.status = 200;
+    } else {
+      ctx.throw(e);
+    }
   }
 });
 
