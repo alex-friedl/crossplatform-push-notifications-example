@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 const mongoHost = process.env.DB_HOST ? process.env.DB_HOST : 'localhost';
 mongoose.Promise = Promise;
-mongoose.connect(`mongodb://${mongoHost}/push-demo`, { useMongoClient: true });
+mongoose.connect(`mongodb://${mongoHost}/push-demo`);
 
 const db = mongoose.connection;
 db.on('error', err => debug('Database connection error:', err));
